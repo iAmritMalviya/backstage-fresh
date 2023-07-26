@@ -10,7 +10,6 @@ import { stringifyEntityRef, DEFAULT_NAMESPACE } from '@backstage/catalog-model'
 export default async function createPlugin(env:PluginEnvironment): Promise<Router> {
 
 
-
   return await createRouter({
     ...env,
 
@@ -20,6 +19,7 @@ export default async function createPlugin(env:PluginEnvironment): Promise<Route
           resolver: async ({profile}, ctx) => {
             console.log("profile", profile);
             
+
             const [localPart, domain] = profile.email.split('@');
 
             console.log(localPart, domain)
@@ -28,8 +28,7 @@ export default async function createPlugin(env:PluginEnvironment): Promise<Route
               name: localPart,
               namespace: DEFAULT_NAMESPACE
             });
-            console.log("userEntitiy", userEntity, [userEntity], DEFAULT_NAMESPACE);
-            
+                   
             return ctx.issueToken({
               claims: {
                 sub: userEntity,
@@ -42,27 +41,6 @@ export default async function createPlugin(env:PluginEnvironment): Promise<Route
     }
   })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

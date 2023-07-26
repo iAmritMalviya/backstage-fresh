@@ -96,7 +96,7 @@ catalog:
 
     # Local example organizational data
     - type: file
-      target: ../../examples/org.yaml
+      target: ../../intverse/team.yaml
       rules:
         - allow: [User, Group]
 
@@ -105,7 +105,7 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
 
     ## Uncomment these lines to add an example org
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
-    #   rules:
-    #     - allow: [User, Group]
+    - type: url
+      target: https://github.com/iAmritMalviya/backstage-fresh/blob/master/intverse/team.yaml
+      rules:
+        - allow: [User, Group]

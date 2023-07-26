@@ -36,7 +36,7 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 import { googleAuthApiRef } from '@backstage/core-plugin-api';
 
 
-
+import { RELATION_HAS_MEMBER, RELATION_MEMBER_OF } from '@backstage/catalog-model';
 const app = createApp({
   apis,
   components: {
@@ -110,6 +110,7 @@ const routes = (
       {searchPage}
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
+    
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
   </FlatRoutes>
 );
