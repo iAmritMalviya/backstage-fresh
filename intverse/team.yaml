@@ -1,0 +1,24 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+   namespace: default
+   name: engineering
+spec:
+   type: team
+   profile:
+      displayName: engineering
+      picture: https://blah.com/engineering
+   children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  namespace: default
+  name: unknownymous0007
+spec:
+  profile:
+    displayName: Amrit Malviya
+    picture: https://avatars.dicebear.com/api/avataaars/unknownymous0007@gmail.com.svg?background=%23fff
+  memberOf:
+    - engineering
