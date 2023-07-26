@@ -10,5 +10,5 @@ metadata:
   #   backstage.io/techdocs-ref: dir:.
 spec:
   type: service
-  owner: user:iAmritMalviya
+  owner: user:unknownymous0007
   lifecycle: experimental
