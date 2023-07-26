@@ -11,7 +11,11 @@ import { PluginTaskScheduler } from '@backstage/backend-tasks';
 import { PermissionEvaluator } from '@backstage/plugin-permission-common';
 import { IdentityApi } from '@backstage/plugin-auth-node';
 
+
+
+
 export type PluginEnvironment = {
+
   logger: Logger;
   database: PluginDatabaseManager;
   cache: PluginCacheManager;

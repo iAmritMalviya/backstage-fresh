@@ -28,8 +28,12 @@ backend:
   # This is for local development only, it is not recommended to use this in production
   # The production database configuration is stored in app-config.production.yaml
   database:
-    client: better-sqlite3
-    connection: ':memory:'
+    client: pg
+    connection: 
+      host: localhost
+      user: postgres
+      password: secret
+      port: 5432
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
 integrations:
@@ -63,7 +67,12 @@ techdocs:
 
 auth:
   # see https://backstage.io/docs/auth/ to learn about auth providers
-  providers: {}
+  environment: development
+  providers: 
+    google:
+      development: 
+        clientId: 158076032398-ca1jb0eq8cgj0cjrdv5kd3rfn5duiotk.apps.googleusercontent.com
+        clientSecret: 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
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options

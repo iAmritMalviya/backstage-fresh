@@ -44,6 +44,7 @@ function makeCreateEnv(config: Config) {
   const identity = DefaultIdentityClient.create({
     discovery,
   });
+
   const permissions = ServerPermissionClient.fromConfig(config, {
     discovery,
     tokenManager,
@@ -54,6 +55,8 @@ function makeCreateEnv(config: Config) {
   return (plugin: string): PluginEnvironment => {
     const logger = root.child({ type: 'plugin', plugin });
     const database = databaseManager.forPlugin(plugin);
+
+    
     const cache = cacheManager.forPlugin(plugin);
     const scheduler = taskScheduler.forPlugin(plugin);
     return {
@@ -76,17 +79,22 @@ async function main() {
     argv: process.argv,
     logger: getRootLogger(),
   });
+
+
+  
   const createEnv = makeCreateEnv(config);
 
   const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));
+
   const scaffolderEnv = useHotMemoize(module, () => createEnv('scaffolder'));
   const authEnv = useHotMemoize(module, () => createEnv('auth'));
-  const proxyEnv = useHotMemoize(module, () => createEnv('proxy'));
+  const proxyEnv = useHotMemoize(module, () => createEnv('proxy'));  
   const techdocsEnv = useHotMemoize(module, () => createEnv('techdocs'));
   const searchEnv = useHotMemoize(module, () => createEnv('search'));
   const appEnv = useHotMemoize(module, () => createEnv('app'));
 
   const apiRouter = Router();
+
   apiRouter.use('/catalog', await catalog(catalogEnv));
   apiRouter.use('/scaffolder', await scaffolder(scaffolderEnv));
   apiRouter.use('/auth', await auth(authEnv));

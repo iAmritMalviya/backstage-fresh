@@ -85,7 +85,7 @@ const cicdContent = (
             color="primary"
             href="https://backstage.io/docs/features/software-catalog/well-known-annotations"
           >
-            Read more
+            Read no more
           </Button>
         }
       />
