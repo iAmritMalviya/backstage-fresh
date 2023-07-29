@@ -2,15 +2,16 @@
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-   namespace: default
-   name: engineering
+  namespace: default
+  name: engineering
 spec:
-   type: team
-   profile:
-      displayName: engineering
-      picture: https://blah.com/engineering
-   children: []
+  type: team
+  profile:
+    displayName: engineering
+    picture: https://blah.com/engineering
+  children: []
 ---
+
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
@@ -18,62 +19,78 @@ metadata:
   name: unknownymous0007
 spec:
   profile:
-    displayName: Amrit Malviya
+    displayName: unknownymous
     picture: https://avatars.dicebear.com/api/avataaars/unknownymous0007@gmail.com.svg?background=%23fff
   memberOf:
     - engineering
 ---
+
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
-  name: calum.leavy
+  namespace: default
+  name: malviya.amrit
 spec:
   profile:
-    displayName: Calum Leavy
-    email: calum-leavy@example.com
+    displayName: amrit Leavy
+    email: malviyaamrit47@gmail.com
     picture: https://avatars.dicebear.com/api/avataaars/calum-leavy@example.com.svg?background=%23fff
-  memberOf: [team-c]
+  memberOf:
+    - engineering
 ---
+
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
+  namespace: default
   name: frank.tiernan
 spec:
   profile:
     displayName: Frank Tiernan
     email: frank-tiernan@example.com
     picture: https://avatars.dicebear.com/api/avataaars/frank-tiernan@example.com.svg?background=%23fff
-  memberOf: [team-c]
+  memberOf:
+    - engineering
 ---
+
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
+  namespace: default
   name: peadar.macmahon
 spec:
   profile:
     displayName: Peadar MacMahon
     email: peadar-macmahon@example.com
     picture: https://avatars.dicebear.com/api/avataaars/peadar-macmahon@example.com.svg?background=%23fff
-  memberOf: [team-c]
+  memberOf:
+    - engineering
 ---
+
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
+  namespace: default
   name: sarah.gilroy
 spec:
   profile:
     displayName: Sarah Gilroy
     email: sarah-gilroy@example.com
     picture: https://avatars.dicebear.com/api/avataaars/sarah-gilroy@example.com.svg?background=%23fff
-  memberOf: [team-c]
+  memberOf:
+    - engineering
 ---
+
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
+  namespace: default
   name: tara.macgovern
 spec:
   profile:
     displayName: Tara MacGovern
     email: tara-macgovern@example.com
     picture: https://avatars.dicebear.com/api/avataaars/tara-macgovern@example.com.svg?background=%23fff
-  memberOf: [team-c]
+  memberOf:
+    - engineering
+---

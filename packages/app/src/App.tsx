@@ -37,6 +37,7 @@ import { googleAuthApiRef } from '@backstage/core-plugin-api';
 
 
 import { RELATION_HAS_MEMBER, RELATION_MEMBER_OF } from '@backstage/catalog-model';
+import { TestPage } from '@internal/plugin-test';
 const app = createApp({
   apis,
   components: {
@@ -112,6 +113,7 @@ const routes = (
     <Route path="/settings" element={<UserSettingsPage />} />
     
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/test" element={<TestPage />} />
   </FlatRoutes>
 );
 

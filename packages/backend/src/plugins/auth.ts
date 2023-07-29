@@ -18,11 +18,12 @@ export default async function createPlugin(env:PluginEnvironment): Promise<Route
         signIn: {
           resolver: async ({profile}, ctx) => {
             console.log("profile", profile);
-            
+            console.log('ctx', ctx)
 
             const [localPart, domain] = profile.email.split('@');
 
             console.log(localPart, domain)
+            
             const userEntity = stringifyEntityRef({
               kind: 'user',
               name: localPart,
