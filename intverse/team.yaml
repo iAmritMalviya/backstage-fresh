@@ -8,7 +8,7 @@ spec:
   type: team
   profile:
     displayName: engineering
-    picture: https://blah.com/engineering
+    picture: https://avatars.dicebear.com/api/avataaars/unknownymous0007@gmail.com.svg?background=%23fff
   children: []
 ---
 
