@@ -20,7 +20,7 @@ metadata:
 spec:
   profile:
     displayName: unknownymous
-     email: unknownymous0007@gmail.com
+    email: unknownymous0007@gmail.com
     picture: https://avatars.dicebear.com/api/avataaars/unknownymous0007@gmail.com.svg?background=%23fff
   memberOf:
     - engineering
