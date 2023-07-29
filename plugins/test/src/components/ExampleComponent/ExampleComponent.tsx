@@ -11,6 +11,7 @@ import {
   UserIdentity,
 } from '@backstage/core-components';
 import { identityApiRef, useApi } from '@backstage/core-plugin-api';
+import {EntityFilterQuery} from '@backstage/catalog-client'
 import { EntityOwnerFilter,getEntityRelations, catalogApiRef } from '@backstage/plugin-catalog-react';
 
 export const ExampleComponent = () => {
@@ -23,37 +24,35 @@ export const ExampleComponent = () => {
   useEffect(() => {
     const fetchUserGroups = async () => {
       try {
-        const userProfile = await identityApi.getProfile();
-        const groups = userProfile.groups ?? [];
-        console.log('groups', groups)
+        const userProfile = await identityApi.getProfileInfo();
+        const user = userProfile.email;
+        const topics = await catalogApi.getEntities({
+          filter : {
+            kind: 'user',
+            'spec.profile.email': user,
+          }                
+        });
+       
+        const groups = topics.items.flatMap(item => item.relations)
+        .filter(relation => relation?.type == 'memberOf')
+        .map(relation => relation?.target.name)
+     
+        console.log('topics', topics, groups)
+       
         setUserGroups(groups);
+        setLoading(false)
 
       } catch (error) {
         console.error('Error fetching user groups:', error);
       }
-    };
-
-    const fetchTopics = async () => {
-      try {
-        const topics = await catalogApi.getEntities({filter: 'user'});
-        console.log('topics', topics)
-        setTopics(topics.items);
-      } catch (error) {
-        console.error('Error fetching topics:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    }; 
 
     fetchUserGroups();
-    fetchTopics();
+ 
   }, []);
 
   // Filter topics based on user's group membership
-  const filteredTopics = topics.filter((topic) => {
-    const allowedGroups = topic?.metadata?.annotations?.['backstage.io/allowed-groups']?.split(',') ?? [];
-    return userGroups.some((group) => allowedGroups.includes(group));
-  });
+
 
   return (
     <Page themeId="tool">
@@ -79,21 +78,12 @@ export const ExampleComponent = () => {
                 and brokers.
               </Typography>
             </Grid>
-          ) : filteredTopics.length === 0 ? (
-            <Grid item>
-              <Typography variant="body1">No topics found for your team.</Typography>
-            </Grid>
-          ) : (
-            filteredTopics.map((topic) => (
-              <Grid item key={topic.metadata.name}>
-                <InfoCard title={topic.metadata.name}>
-                  <Typography variant="body1">
-                    Topic details...
-                  </Typography>
-                </InfoCard>
-              </Grid>
-            ))
-          )}
+          ):
+          
+          'You are part of the ' + userGroups
+          
+          
+          }
         </Grid>
       </Content>
     </Page>

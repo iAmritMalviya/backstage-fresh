@@ -29,7 +29,7 @@ export default async function createPlugin(env:PluginEnvironment): Promise<Route
               name: localPart,
               namespace: DEFAULT_NAMESPACE
             });
-                   
+
             return ctx.issueToken({
               claims: {
                 sub: userEntity,
