@@ -3,7 +3,7 @@ app:
   baseUrl: http://localhost:3000
 
 organization:
-  name: My Company
+  name: Backstage Fresh
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
@@ -13,6 +13,7 @@ backend:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
   baseUrl: http://localhost:7007
+  test: 'config'
   listen:
     port: 7007
     # Uncomment the following host directive to bind to specific interfaces
@@ -41,6 +42,7 @@ integrations:
     - host: github.com
       # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
       # about setting up the GitHub integration here: https://backstage.io/docs/getting-started/configuration#setting-up-a-github-integration
+      
       token: ${GITHUB_TOKEN}
     ### Example for how to add your GitHub Enterprise instance using the API:
     # - host: ghe.example.net

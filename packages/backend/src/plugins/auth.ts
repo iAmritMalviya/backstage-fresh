@@ -9,6 +9,7 @@ import { stringifyEntityRef, DEFAULT_NAMESPACE } from '@backstage/catalog-model'
 
 export default async function createPlugin(env:PluginEnvironment): Promise<Router> {
 
+  
 
   return await createRouter({
     ...env,
@@ -20,7 +21,7 @@ export default async function createPlugin(env:PluginEnvironment): Promise<Route
             console.log("profile", profile);
             console.log('ctx', ctx)
 
-            const [localPart, domain] = profile.email.split('@');
+            const [localPart, domain] = profile.email.split('@') || []
 
             console.log(localPart, domain)
             

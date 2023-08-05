@@ -38,6 +38,7 @@ import { googleAuthApiRef } from '@backstage/core-plugin-api';
 
 import { RELATION_HAS_MEMBER, RELATION_MEMBER_OF } from '@backstage/catalog-model';
 import { TestPage } from '@internal/plugin-test';
+import { ProtectedRoute } from './components/AdditionalRoutes/ProtectedRoute';
 const app = createApp({
   apis,
   components: {
@@ -74,9 +75,16 @@ const app = createApp({
   },
 });
 
+
+
 const routes = (
   <FlatRoutes>
-    <Route path="/" element={<Navigate to="catalog" />} />
+    <Route path="/" element={
+    <ProtectedRoute>
+      <Navigate to="catalog" />
+    </ProtectedRoute>
+    } />
+
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route
       path="/catalog/:namespace/:kind/:name"

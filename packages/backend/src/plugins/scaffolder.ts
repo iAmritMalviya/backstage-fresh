@@ -10,7 +10,7 @@ export default async function createPlugin(
     discoveryApi: env.discovery,
   });
 
-  return await createRouter({
+  const routerResponse = await createRouter({
     logger: env.logger,
     config: env.config,
     database: env.database,
@@ -19,4 +19,5 @@ export default async function createPlugin(
     identity: env.identity,
     permissions: env.permissions,
   });
+  return routerResponse
 }
